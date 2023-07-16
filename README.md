@@ -1,6 +1,6 @@
 # Continuous Intelligence and Interactive Analytics - Reactive Apps
 
-- Interactive app: [Uma-NW-04-reactive](https://denisecase.shinyapps.io/cintel-04-reactive/)
+- Interactive app: [Uma-NW-04-reactive](https://umams2002.shinyapps.io/uma-nw-04-reactive/)
 - Repository: [Uma-NW-04-reactive](https://github.com/umams2002/Uma-NW-04-reactive)
 - Author: [Uma Subramanian](https://github.com/umams2002)
 
