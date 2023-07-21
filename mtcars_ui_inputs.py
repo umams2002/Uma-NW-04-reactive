@@ -20,7 +20,7 @@ def get_mtcars_inputs():
             max=35,
             value=[10, 35],
         ),
-        ui.input_numeric("Max_Horse_Power","Max Horse Power", value=400),
+        ui.input_numeric("MTCARS_MAX_HP","Max Hp Range:",value=245),
         ui.tags.hr(),
         ui.tags.section(
             ui.h3("MT Cars Table"),
@@ -37,6 +37,7 @@ def get_mtcars_inputs():
                 ui.tags.li("am: Transmission (0 = Automatic, 1 = Manual)"),
                 ui.tags.li("gear: Number of forward gears"),
                 ui.tags.li("carb: Number of carburetors"),
+                
             ),
             ui.output_table("cars_table"),
         ),

@@ -25,6 +25,7 @@ def get_penguins_inputs():
             value=[2700, 6300],
         ),
         ui.input_numeric("PENGUIN_MAX_BILL", "Max Bill Length (mm):", value=60.0),
+        ui.input_numeric("PENGUIL_MAX_DEPTH","Max Depth Length(mm)",value=22.0),
         ui.input_checkbox("PENGUIN_SPECIES_Adelie", "Adelie", value=True),
         ui.input_checkbox("PENGUIN_SPECIES_Chinstrap", "Chinstrap", value=True),
         ui.input_checkbox("PENGUIN_SPECIES_Gentoo", "Gentoo", value=True),

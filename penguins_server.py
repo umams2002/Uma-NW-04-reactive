@@ -38,6 +38,7 @@ def get_penguins_server_functions(input, output, session):
     @reactive.event(
         input.PENGUIN_BODY_MASS_RANGE,
         input.PENGUIN_MAX_BILL,
+        input.PENGUIL_MAX_DEPTH,
         input.PENGUIN_SPECIES_Adelie,
         input.PENGUIN_SPECIES_Chinstrap,
         input.PENGUIN_SPECIES_Gentoo,
@@ -65,6 +66,10 @@ def get_penguins_server_functions(input, output, session):
         bill_length_filter = df["bill_length_mm"] <= input.PENGUIN_MAX_BILL()
         df = df[bill_length_filter]
 
+        #Bill max depth
+        bill_depth_filter = df["bill_depth_mm"] <= input.PENGUIL_MAX_DEPTH()
+        df=df[bill_depth_filter]
+
         # Species is a list of checkboxes (a list of possible values)
         show_species_list = []
         if input.PENGUIN_SPECIES_Adelie():
@@ -84,7 +89,7 @@ def get_penguins_server_functions(input, output, session):
             gender_filter = df["sex"] == gender_dict[input_gender]
             df = df[gender_filter]
 
-        # logger.debug(f"filtered penguins df: {df}")
+      # logger.debug(f"filtered penguins df: {df}")
         reactive_df.set(df)
 
     @output

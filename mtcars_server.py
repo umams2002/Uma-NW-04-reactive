@@ -32,7 +32,8 @@ def get_mtcars_server_functions(input, output, session):
     reactive_df = reactive.Value()
 
     @reactive.Effect
-    @reactive.event(input.MTCARS_MPG_RANGE,input.MTCARS_HP_MAX_LIMIT,)
+    @reactive.event(input.MTCARS_MPG_RANGE,
+                    input.MTCARS_MAX_HP)
     def _():
         df = original_df.copy()
 
@@ -48,15 +49,10 @@ def get_mtcars_server_functions(input, output, session):
         You must be familiar with the dataset to know the column names.
         """
 
-        filtered_df = df[(df["mpg"] >= input_min) & (df["mpg"] <= input_max)]
-        df =df[filtered_df]
-
-        mtcars_hp_max = df["hp"] <= input.MTCARS_HP_MAX_LIMIT()
-        df = df[mtcars_hp_max]
+        filtered_df = df[((df["mpg"] >= input_min) & (df["mpg"] <= input_max) & df["hp"] <= input.MTCARS_MAX_HP())]
         
-
         # Set the reactive value
-        reactive_df.set(df)
+        reactive_df.set(filtered_df)
 
     @output
     @render.text
