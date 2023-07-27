@@ -48,11 +48,18 @@ def get_mtcars_server_functions(input, output, session):
         The column name is in quotes and is "mpg".
         You must be familiar with the dataset to know the column names.
         """
+        mpg_range_filter = (df["mpg"] >= input_min) & (
+            df["mpg"] <= input_max
+        )
+        df = df[mpg_range_filter]
 
-        filtered_df = df[((df["mpg"] >= input_min) & (df["mpg"] <= input_max) & df["hp"] <= input.MTCARS_MAX_HP())]
+        hp_range_filter = df["hp"] <= input.MTCARS_MAX_HP()
+        df = df[hp_range_filter]
+
+        #filtered_df = df[((df["mpg"] >= input_min) & (df["mpg"] <= input_max) & df["hp"] <= input.MTCARS_MAX_HP())]
         
         # Set the reactive value
-        reactive_df.set(filtered_df)
+        reactive_df.set(df)
 
     @output
     @render.text
